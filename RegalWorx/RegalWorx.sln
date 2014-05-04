@@ -10,9 +10,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Content", "Content", "{F497
 		Content\DatabaseModel.pdf = Content\DatabaseModel.pdf
 		Content\DatabaseModel.vsd = Content\DatabaseModel.vsd
 		Content\Logo.ico = Content\Logo.ico
+		Content\RegalWorxDB.sqlitedb = Content\RegalWorxDB.sqlitedb
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RegalWorxData", "RegalWorxData\RegalWorxData.csproj", "{BE4C1252-68E1-4380-A744-37A9EC055F4B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "References", "References", "{47C20A1B-C97A-4FE6-97A6-806313FBDBC2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLite", "SQLite", "{3DE3D2CE-8873-49FD-82B4-892E42B80991}"
+	ProjectSection(SolutionItems) = preProject
+		References\SQLite\System.Data.SQLite.dll.config = References\SQLite\System.Data.SQLite.dll.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "64Bit", "64Bit", "{0AC34E8C-CCF8-43EE-9A40-B69898F8275F}"
+	ProjectSection(SolutionItems) = preProject
+		References\SQLite\64Bit\SQLite.Designer.dll = References\SQLite\64Bit\SQLite.Designer.dll
+		References\SQLite\64Bit\System.Data.SQLite.dll = References\SQLite\64Bit\System.Data.SQLite.dll
+		References\SQLite\64Bit\System.Data.SQLite.EF6.dll = References\SQLite\64Bit\System.Data.SQLite.EF6.dll
+		References\SQLite\64Bit\System.Data.SQLite.Linq.dll = References\SQLite\64Bit\System.Data.SQLite.Linq.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "32Bit", "32Bit", "{6783B61C-3435-450A-A4D2-05923700A267}"
+	ProjectSection(SolutionItems) = preProject
+		References\SQLite\32Bit\SQLite.Designer.dll = References\SQLite\32Bit\SQLite.Designer.dll
+		References\SQLite\32Bit\System.Data.SQLite.dll = References\SQLite\32Bit\System.Data.SQLite.dll
+		References\SQLite\32Bit\System.Data.SQLite.EF6.dll = References\SQLite\32Bit\System.Data.SQLite.EF6.dll
+		References\SQLite\32Bit\System.Data.SQLite.Linq.dll = References\SQLite\32Bit\System.Data.SQLite.Linq.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,5 +55,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3DE3D2CE-8873-49FD-82B4-892E42B80991} = {47C20A1B-C97A-4FE6-97A6-806313FBDBC2}
+		{0AC34E8C-CCF8-43EE-9A40-B69898F8275F} = {3DE3D2CE-8873-49FD-82B4-892E42B80991}
+		{6783B61C-3435-450A-A4D2-05923700A267} = {3DE3D2CE-8873-49FD-82B4-892E42B80991}
 	EndGlobalSection
 EndGlobal

@@ -29,23 +29,38 @@
 		private void InitializeComponent()
 		{
 			this.grid = new System.Windows.Forms.DataGridView();
+			this.button1 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.grid)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// grid
 			// 
 			this.grid.AllowUserToDeleteRows = false;
+			this.grid.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
 			this.grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.grid.Location = new System.Drawing.Point(12, 104);
 			this.grid.Name = "grid";
-			this.grid.Size = new System.Drawing.Size(805, 332);
+			this.grid.Size = new System.Drawing.Size(1116, 332);
 			this.grid.TabIndex = 0;
+			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(13, 13);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(129, 23);
+			this.button1.TabIndex = 1;
+			this.button1.Text = "Generate Test Data";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.GenerateTestData_Click);
 			// 
 			// TestForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(829, 448);
+			this.ClientSize = new System.Drawing.Size(1140, 448);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.grid);
 			this.Name = "TestForm";
 			this.Text = "TestForm";
@@ -58,5 +73,6 @@
 		#endregion
 
 		private System.Windows.Forms.DataGridView grid;
+		private System.Windows.Forms.Button button1;
 	}
 }

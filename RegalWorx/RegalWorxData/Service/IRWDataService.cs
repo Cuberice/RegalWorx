@@ -11,6 +11,12 @@ namespace RegalWorxData
 	public interface IRWDataService
 	{
 		[OperationContract]
-		void DoWork();
+		List<User> GetAllUsers();
+
+		[OperationContract]
+		void InsertUser(User user);		
+		
+		[OperationContract]
+		void InsertEquipment(Equipment equipment);
 	}
 }
