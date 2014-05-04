@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Common;
 using RegalWorxData;
 using RegalWorxData.Properties;
 
@@ -51,6 +52,10 @@ namespace RegalWorxData
 		#endregion
 
 		#region Data Execution
+		public IAdapterCommand CreateCommand(string commandstring)
+		{
+			return new SQLiteAdapterCommand(commandstring);
+		}
 		
 		public void PerformWithDataReader(string cmdSelect, Func<IAdapterReader, object> perform)
 		{
@@ -198,54 +203,5 @@ namespace RegalWorxData
 		}
 
 		#endregion
-
-		public List<User> GetAllUsers()
-		{
-			List<User> list = new List<User>();
-			PerformWithDataReader("Select * from TBL_USER", reader =>
-				{
-					list.Add(ModelUtils.CreateInstance<User>(reader));
-					return null;
-				});			
-			
-//			PerformWithDataReader("Select * from TBL_USER", reader =>
-//			{
-//				SQLiteAdapterReader r = (SQLiteAdapterReader) reader;
-//				SQLiteDataReader s = r.Reader;
-//				
-//				return null;
-//			});
-			
-			return list;
-		}
-	
-		public void InsertUser(User user)
-		{
-			ExecuteNonQuery(() =>
-				{
-					IAdapterCommand cmd = new SQLiteAdapterCommand("INSERT INTO TBL_USER(ID, NAME, TYPE)	VALUES(@id, @name, @type_id)");
-					cmd.AddParameter("@id", user.ID);
-					cmd.AddParameter("@name", user.Name);
-					cmd.AddParameter("@type_id", (int)user.Type);
-					return cmd;
-				});
-		}
-
-		public void InsertEquipment(Equipment equipment)
-		{
-			ExecuteNonQuery(() =>
-			{
-				IAdapterCommand cmd = new SQLiteAdapterCommand("INSERT INTO TBL_EQUIPMENT(ID, NAME, TYPE)	VALUES(@id, @name, @type_id)");
-				cmd.AddParameter("@id", equipment.ID);
-				cmd.AddParameter("@name", equipment.Name);
-				cmd.AddParameter("@type_id", equipment.Type.ID);
-				return cmd;
-			});
-		}
-	}
-
-	public static class SQLiteExtensions
-	{
-		
 	}
 }

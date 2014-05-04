@@ -1,32 +1,58 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
 using System.Text;
+using System.Threading.Tasks;
+using Common;
 
-namespace RegalWorxData
+namespace RegalWorxData.Service
 {
-	// NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "RWDataService" in both code and config file together.
 	public class RWDataService : IRWDataService
 	{
+		public IDbAdapter Adapter { get; set; }
+
 		public List<User> GetAllUsers()
 		{
-			IDbAdapter adapter = new SQLiteDataAdapter();
-
-			return adapter.GetAllUsers();
+			List<User> list = new List<User>();
+			Adapter.PerformWithDataReader("Select * from TBL_USER", reader =>
+				{
+					list.Add(ModelUtils.CreateInstance<User>(reader));
+					return null;
+				});			
+					
+//			PerformWithDataReader("Select * from TBL_USER", reader =>
+//			{
+//				SQLiteAdapterReader r = (SQLiteAdapterReader) reader;
+//				SQLiteDataReader s = r.Reader;
+//				
+//				return null;
+//			});
+					
+			return list;
 		}
-
+			
 		public void InsertUser(User user)
 		{
-			IDbAdapter adapter = new SQLiteDataAdapter();
-
-			adapter.InsertUser(user);
+			Adapter.ExecuteNonQuery(() =>
+			{
+				IAdapterCommand cmd = Adapter.CreateCommand("INSERT INTO TBL_USER(ID, NAME, TYPE)	VALUES(@id, @name, @type_id)");
+				cmd.AddParameter("@id", user.ID);
+				cmd.AddParameter("@name", user.Name);
+				cmd.AddParameter("@type_id", (int)user.Type);
+				return cmd;
+			});
 		}
-
+		
 		public void InsertEquipment(Equipment equipment)
 		{
-			throw new NotImplementedException();
+			Adapter.ExecuteNonQuery(() =>
+			{
+				IAdapterCommand cmd = Adapter.CreateCommand("INSERT INTO TBL_EQUIPMENT(ID, NAME, TYPE)	VALUES(@id, @name, @type_id)");
+				cmd.AddParameter("@id", equipment.ID);
+				cmd.AddParameter("@name", equipment.Name);
+				cmd.AddParameter("@type_id", equipment.Type.ID);
+				return cmd;
+			});
 		}
 	}
 }

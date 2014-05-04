@@ -6,11 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Common;
 using RegalWorxData;
 
 namespace RegalWorxData
 {
-	public class MySqlDataAdapter
+	public class MySqlDataAdapter : IDbAdapter
 	{
 		#region Command Building
 		public string CREATETABLE()
@@ -47,6 +48,10 @@ namespace RegalWorxData
 		#endregion
 
 		#region Data Execution
+		public IAdapterCommand CreateCommand(string commandstring)
+		{
+			throw new NotImplementedException();
+		}
 
 		public void PerformWithDataReader(string cmdSelect, Func<IAdapterReader, object> perform)
 		{
@@ -164,26 +169,5 @@ namespace RegalWorxData
 			}
 		}
 		#endregion
-
-		public List<User> GetAllUsers()
-		{
-			PerformWithDataReader("Select * from TBL_USER", reader =>
-			{
-				SQLiteDataReader sreader = (SQLiteDataReader)reader;
-				return null;
-			});
-			return new List<User>();
-		}
-
-		public void InsertUser(User user)
-		{
-			throw new NotImplementedException();
-		}
-
-		public void InsertEquipment(Equipment equipment)
-		{
-			throw new NotImplementedException();
-		}
-		
 	}
 }

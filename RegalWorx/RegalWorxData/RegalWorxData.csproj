@@ -59,6 +59,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Service\RWDataService.cs" />
     <Compile Include="SQLBuilder\CustomAttributes.cs" />
     <Compile Include="Extentions.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
@@ -68,10 +69,9 @@
     </Compile>
     <Compile Include="Service\IRWDataService.cs" />
     <Compile Include="Models.cs" />
-    <Compile Include="Adapters\IGenericAdapter.cs" />
+    <Compile Include="Adapters\IDbAdapter.cs" />
     <Compile Include="Adapters\MySqlDataAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\RWDataService.cs" />
     <Compile Include="Adapters\SQLiteDataAdapter.cs" />
     <Compile Include="SQLBuilder\SQLBuilder.cs" />
     <Compile Include="TestForm.cs">
