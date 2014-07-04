@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Core;
-using Core.Common;
 using Core.Data;
 
 namespace Models
@@ -21,15 +20,14 @@ namespace Models
 		[Column("TYPE", Column.DataType.Integer, NotNull = true)]
 		public UserType Type { get; set; }
 
-		public User(Guid id, string name, int typeid)
-			: this()
+		public User(Guid id, string name, int typeid) : this()
 		{
 			ID = id;
 			Name = "";
 			Type = UserType.Admin;
 		}
 
-		public Object CreateTestObject()
+		public Object CreateTestObject(params object[] parameters)
 		{
 			ID = Guid.NewGuid();
 			Name = Extentions.GetRandomString(8);
@@ -88,7 +86,7 @@ namespace Models
 		[Column("TYPE", Column.DataType.Guid)]
 		public EquipmentType Type { get; set; }
 
-		public object CreateTestObject()
+		public object CreateTestObject(params object[] parameters)
 		{
 			ID = Guid.NewGuid();
 			Name = Extentions.GetRandomString(8);
@@ -123,7 +121,7 @@ namespace Models
 		[Column("NAME", Column.DataType.String, NotNull = true)]
 		public string Name { get; set; }
 
-		public object CreateTestObject()
+		public object CreateTestObject(params object[] parameters)
 		{
 			ID = Guid.NewGuid();
 			Name = "Test Equipment Make";
@@ -149,7 +147,7 @@ namespace Models
 		[Column("DESCRIPTION", Column.DataType.String, NotNull = true)]
 		public string Description { get; set; }
 
-		public object CreateTestObject()
+		public object CreateTestObject(params object[] parameters)
 		{
 			ID = Guid.NewGuid();
 			Description = "Test Equipment Type";

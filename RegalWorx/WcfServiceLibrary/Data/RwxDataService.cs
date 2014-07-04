@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Core.Data;
-using Core.Models;
 using Core.Service;
 using Models;
 
@@ -10,17 +9,13 @@ namespace RegalWorx
 	{
 		public List<User> GetAllUsers()
 		{
-			List<User> list = new List<User>();
-			Adapter.PerformWithDataReader(SelectCommandString<User>(), r => list.Add(ModelExtensions.CreateInstance<User>(r)));
-
+			List<User> list = SelectForModel<User>();
 			return list;
 		}
 
 		public List<Equipment> GetAllEquipment()
 		{
-			List<Equipment> list = new List<Equipment>();
-			Adapter.PerformWithDataReader(SelectCommandString<Equipment>(), r => list.Add(ModelExtensions.CreateInstance<Equipment>(r)));
-
+			List<Equipment> list = SelectForModel<Equipment>();
 			return list;
 		}
 
